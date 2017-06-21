@@ -29,6 +29,7 @@
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"/>
             <TextView
+                android:id="@+id/appBarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -37,7 +38,6 @@
                 android:shadowDx="5.0"
                 android:shadowDy="5.0"
                 android:shadowRadius="5.0"
-                android:text="@string/the_best_app"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 app:layout_collapseMode="parallax"/>
 

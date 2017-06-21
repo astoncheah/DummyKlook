@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
+import android.dummyklook.R;
 import android.dummyklook.data.ItemsContract;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -13,6 +14,7 @@ import android.net.Uri;
 import android.os.RemoteException;
 import android.text.format.Time;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +40,9 @@ public class UpdaterService extends IntentService{
         ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo ni = cm.getActiveNetworkInfo();
         if (ni == null || !ni.isConnected()) {
-            Log.w(TAG, "Not online, not refreshing.");
+            Toast.makeText(this,R.string.no_connection,Toast.LENGTH_LONG).show();
+            sendBroadcast(
+                new Intent(BROADCAST_ACTION_STATE_CHANGE).putExtra(EXTRA_REFRESHING, false));
             return;
         }
 

@@ -35,6 +35,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.squareup.picasso.Picasso;
@@ -197,6 +198,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         final String IMAGE_URL = Config.BASE_IMAGE_URL+cursor.getString(ItemsContract.Query.POSTER_URL);
         Picasso.with(this).load(IMAGE_URL).into(appBarImage);
         updateImage();
+
+        ((TextView)findViewById(R.id.appBarTitle)).setText(getString(R.string.the_best_app));
 
         LinearLayout mainView = (LinearLayout)findViewById(R.id.cardViewGroup);
 

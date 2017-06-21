@@ -8,6 +8,7 @@
     <string name="sort_date">Date</string>
     <string name="sort_our_pick">Our Picks</string>.
     <string name="searching">You are searching</string>
+    <string name="no_connection">Please check internet connection</string>
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_main2">Main2Activity</string>
