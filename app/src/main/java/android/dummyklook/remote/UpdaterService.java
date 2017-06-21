@@ -3,6 +3,7 @@ package android.dummyklook.remote;
 import android.app.IntentService;
 import android.content.ContentProviderOperation;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
@@ -37,14 +38,7 @@ public class UpdaterService extends IntentService{
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo ni = cm.getActiveNetworkInfo();
-        if (ni == null || !ni.isConnected()) {
-            Toast.makeText(this,R.string.no_connection,Toast.LENGTH_LONG).show();
-            sendBroadcast(
-                new Intent(BROADCAST_ACTION_STATE_CHANGE).putExtra(EXTRA_REFRESHING, false));
-            return;
-        }
+        if(!isInternetConnected(this))return;
 
         sendBroadcast(
                 new Intent(BROADCAST_ACTION_STATE_CHANGE).putExtra(EXTRA_REFRESHING, true));
@@ -97,5 +91,16 @@ public class UpdaterService extends IntentService{
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+    public static boolean isInternetConnected(Context context){
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        if (ni == null || !ni.isConnected()) {
+            Toast.makeText(context,R.string.no_connection,Toast.LENGTH_LONG).show();
+            context.sendBroadcast(
+                new Intent(BROADCAST_ACTION_STATE_CHANGE).putExtra(EXTRA_REFRESHING, false));
+            return false;
+        }
+        return true;
     }
 }

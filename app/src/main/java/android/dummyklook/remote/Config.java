@@ -7,7 +7,7 @@ public class Config {
     public static final URL POPULAR_URL;
     public static final URL TOP_RATED_URL;
     public static final String API_KEY = "98b8694252f0acbb8f656a9c87f06ead";
-    public static final String BASE_IMAGE_URL = "http://image.tmdb.org/t/p/w342/";//"w92", "w154", "w185", "w342", "w500", "w780", or "original"
+    public static final String BASE_IMAGE_URL = "http://image.tmdb.org/t/p/w500/";//"w92", "w154", "w185", "w342", "w500", "w780", or "original"
     public static final String BASE_MOVIE_URL = "https://www.themoviedb.org/movie/";
     public static final String BASE_API_URL = "https://api.themoviedb.org/3/movie/";
     public static final String YOUTUBE_LINK = "https://www.youtube.com/watch?v=";

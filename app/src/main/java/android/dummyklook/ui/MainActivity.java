@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     private void refresh() {
+        if(!UpdaterService.isInternetConnected(this))return;
         Intent i = new Intent(this, UpdaterService.class);
         startService(i);
     }
@@ -158,6 +159,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onStop() {
         super.onStop();
         unregisterReceiver(mRefreshingReceiver);
+    }
+    @Override
+    protected void onDestroy(){
+        if(cursor!=null) {
+            cursor.close();
+        }
+        super.onDestroy();
     }
     private boolean mIsRefreshing = false;
     private BroadcastReceiver mRefreshingReceiver = new BroadcastReceiver() {
@@ -234,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         handler.postDelayed(new Runnable(){
             @Override
             public void run(){
-                if(cursor!=null && cursor.isClosed()){
+                if(cursor!=null && !cursor.isClosed()){
                     if(cursor.moveToNext()){
                         final String IMAGE_URL = Config.BASE_IMAGE_URL+cursor.getString(ItemsContract.Query.POSTER_URL);
                         Picasso.with(MainActivity.this).load(IMAGE_URL).into(appBarImage);
