@@ -1,0 +1,59 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorAccent"
+            android:elevation="4dp"/>
+        <TextView
+            style="@style/CardText"
+            android:text="@string/popular"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/SearchText"
+                android:text="@string/hong_kong"/>
+
+            <TextView
+                style="@style/SearchText"
+                android:text="@string/singapore"/>
+
+            <TextView
+                style="@style/SearchText"
+                android:text="@string/tokyo"/>
+
+            <TextView
+                style="@style/SearchText"
+                android:text="@string/osaka"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/SearchText"
+                android:text="@string/kyoto"/>
+
+            <TextView
+                style="@style/SearchText"
+                android:text="@string/seoul"/>
+
+            <TextView
+                style="@style/SearchText"
+                android:text="@string/taipei"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
